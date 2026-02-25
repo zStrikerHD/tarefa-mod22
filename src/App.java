@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class App {
-    static void main(String[] args) {
+    static void main(String args[]) {
         dadosPessoas();
     }
 
@@ -49,7 +49,7 @@ public class App {
 
                     System.out.println("Pressione um tecla para continuar.");
                     sc.nextLine();
-                }         
+                }
             } else if (opcao == 3) {
                 if (listaPessoas.isEmpty()){
                     System.out.println("Não existem pessoas cadastradas, pressione uma tecla para continuar!");
@@ -63,5 +63,12 @@ public class App {
         } while (opcao != 0);
 
         sc.close();
+
+    }
+
+    public static List<Pessoa> filtrarFeminino(List<Pessoa> lista) {
+        return lista.stream()
+                .filter(p -> p.getGenero().equalsIgnoreCase("Feminino"))
+                .toList(); // No Java 16+ usa-se .toList(), para versões anteriores use .collect(Collectors.toList())
     }
 }
